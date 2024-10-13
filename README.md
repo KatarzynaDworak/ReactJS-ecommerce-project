@@ -16,8 +16,8 @@ Tailwind CSS for fast and consistent styling
 🛠️ Implementation
 The project follows a component-based structure, making it easy to extend and maintain. Zustand is used to manage the global state (shopping cart), ensuring a smooth and responsive user experience. Tailwind CSS helps in achieving a minimalist and modern design with a focus on responsiveness.
 
-🛠️ Languages and Tools Used
-React (JavaScript)
+## 🛠️ Languages and Tools Used
+* React (JavaScript)
 Zustand for state management
 Tailwind CSS for styling
 Vite for fast development build tool
@@ -34,15 +34,18 @@ This project is an ongoing effort, and feedback is always welcome! Stay tuned fo
 
 ## How to run the project locally:
 Clone the repository:
-
+    
     git clone https://github.com/yourusername/your-repo-name.git
-    Navigate to the project directory:
+
+Navigate to the project directory:
 
     cd your-repo-name
-    Install the dependencies:
+
+Install the dependencies:
 
     npm install
-    Start the development server:
+
+Start the development server:
 
     npm start
 
