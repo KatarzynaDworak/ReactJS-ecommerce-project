@@ -6,8 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        'custom-red': 'rgb(222, 62, 81)',
-        'custom-red-light': 'rgb(219, 89, 105)',
+        'custom-pink': '#F8E1E7',    // Jasny róż jako tło
+        'custom-cta': '#E91E63',     // Kolor CTA, głęboki róż
+        'custom-dark': '#333',       // Ciemny szary dla kontrastu tekstu
+        'custom-light': '#FAFAFA',   // Delikatny kremowy kolor jako tło
       },
     },
   },

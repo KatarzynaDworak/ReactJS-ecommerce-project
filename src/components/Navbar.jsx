@@ -5,12 +5,14 @@ const Navbar = () => {
   const cart = useStore((state) => state.cart);
 
   return (
-    <nav className="bg-custom-red text-white p-4 shadow-lg">
+        <nav className="bg-custom-pink text-custom-dark p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold">MyCosmetics</Link>
+        <Link to="/" className="text-2xl font-bold tracking-tight text-custom-dark">
+          MyCosmetics
+        </Link>
         <Link to="/cart" className="flex items-center space-x-2">
           <span>Cart</span>
-          <span className="bg-white text-custom-red rounded-full px-2 py-1 text-sm">
+          <span className="bg-custom-cta text-white rounded-full px-3 py-1 text-sm">
             {cart.length}
           </span>
         </Link>
