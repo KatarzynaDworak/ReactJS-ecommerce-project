@@ -6,42 +6,76 @@ const Cart = () => {
   const incrementQuantity = useStore((state) => state.incrementQuantity);
   const decrementQuantity = useStore((state) => state.decrementQuantity);
 
+  // Oblicz subtotal (sumę wartości produktów w koszyku)
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  // Definiujemy wartości stałe dla podatku i kosztów wysyłki
+  const taxRate = 0.23; // 23% VAT
+  const shippingCost = subtotal > 100 ? 0 : 15; // Darmowa wysyłka powyżej 100 zł
+
+  // Oblicz podatek i łączną kwotę
+  const tax = subtotal * taxRate;
+  const total = subtotal + tax + shippingCost;
+
   return (
     <div className="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-semibold mb-6">Your Cart</h2>
       {cart.length === 0 ? (
         <p className="text-gray-500">Your cart is empty</p>
       ) : (
-        <div className="space-y-4">
-          {cart.map((item) => (
-            <div key={item.id} className="flex items-center justify-between p-4 border rounded-md bg-custom-light shadow-sm">
-              <div>
-                <h3 className="text-lg font-medium text-custom-dark">{item.name}</h3>
-                <p className="text-gray-600">${item.price}</p>
-              </div>
-              <div className="flex items-center space-x-2">
+        <div>
+          <div className="space-y-4">
+            {cart.map((item) => (
+              <div key={item.id} className="flex items-center justify-between p-4 border rounded-md bg-custom-light shadow-sm">
+                <div>
+                  <h3 className="text-lg font-medium text-custom-dark">{item.name}</h3>
+                  <p className="text-gray-600">${item.price}</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => decrementQuantity(item.id)}
+                    className="text-custom-cta px-2 py-1 border rounded hover:bg-gray-200"
+                  >
+                    -
+                  </button>
+                  <span className="text-lg font-medium">{item.quantity}</span>
+                  <button
+                    onClick={() => incrementQuantity(item.id)}
+                    className="text-custom-cta px-2 py-1 border rounded hover:bg-gray-200"
+                  >
+                    +
+                  </button>
+                </div>
                 <button
-                  onClick={() => decrementQuantity(item.id)}
-                  className="text-custom-cta px-2 py-1 border rounded hover:bg-gray-200"
+                  onClick={() => removeFromCart(item.id)}
+                  className="text-red-500 hover:text-red-700"
                 >
-                  -
-                </button>
-                <span className="text-lg font-medium">{item.quantity}</span>
-                <button
-                  onClick={() => incrementQuantity(item.id)}
-                  className="text-custom-cta px-2 py-1 border rounded hover:bg-gray-200"
-                >
-                  +
+                  Remove
                 </button>
               </div>
-              <button
-                onClick={() => removeFromCart(item.id)}
-                className="text-red-500 hover:text-red-700"
-              >
-                Remove
-              </button>
+            ))}
+          </div>
+
+          {/* Sekcja Podsumowania */}
+          <div className="mt-6 p-4 bg-gray-100 rounded-lg shadow-sm">
+            <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
+            <div className="flex justify-between mb-2">
+              <span>Subtotal:</span>
+              <span>${subtotal.toFixed(2)}</span>
             </div>
-          ))}
+            <div className="flex justify-between mb-2">
+              <span>Tax (23%):</span>
+              <span>${tax.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between mb-2">
+              <span>Shipping:</span>
+              <span>{shippingCost === 0 ? 'Free' : `$${shippingCost.toFixed(2)}`}</span>
+            </div>
+            <div className="flex justify-between font-semibold mt-4 border-t pt-2">
+              <span>Total:</span>
+              <span>${total.toFixed(2)}</span>
+            </div>
+          </div>
         </div>
       )}
     </div>
@@ -49,4 +83,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
