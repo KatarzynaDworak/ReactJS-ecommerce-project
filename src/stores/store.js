@@ -1,11 +1,9 @@
 import { create } from 'zustand';
 
-// Funkcja pomocnicza do zapisywania w localStorage
 const saveCartToLocalStorage = (cart) => {
   localStorage.setItem('cart', JSON.stringify(cart));
 };
 
-// Funkcja pomocnicza do pobierania z localStorage
 const getCartFromLocalStorage = () => {
   const savedCart = localStorage.getItem('cart');
   return savedCart ? JSON.parse(savedCart) : [];
@@ -27,14 +25,14 @@ const useStore = create((set) => ({
         updatedCart = [...state.cart, { ...product, quantity: 1 }];
       }
 
-      saveCartToLocalStorage(updatedCart); // Zapis do localStorage
+      saveCartToLocalStorage(updatedCart);
       return { cart: updatedCart };
     }),
 
   removeFromCart: (productId) =>
     set((state) => {
       const updatedCart = state.cart.filter((item) => item.id !== productId);
-      saveCartToLocalStorage(updatedCart); // Zapis do localStorage
+      saveCartToLocalStorage(updatedCart); 
       return { cart: updatedCart };
     }),
 
@@ -43,7 +41,7 @@ const useStore = create((set) => ({
       const updatedCart = state.cart.map((item) =>
         item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
       );
-      saveCartToLocalStorage(updatedCart); // Zapis do localStorage
+      saveCartToLocalStorage(updatedCart);
       return { cart: updatedCart };
     }),
 
@@ -54,12 +52,12 @@ const useStore = create((set) => ({
           ? { ...item, quantity: item.quantity - 1 }
           : item
       );
-      saveCartToLocalStorage(updatedCart); // Zapis do localStorage
+      saveCartToLocalStorage(updatedCart);
       return { cart: updatedCart };
     }),
 
   clearCart: () => {
-    saveCartToLocalStorage([]); // Czyścimy koszyk w localStorage
+    saveCartToLocalStorage([]); 
     return { cart: [] };
   },
 }));
