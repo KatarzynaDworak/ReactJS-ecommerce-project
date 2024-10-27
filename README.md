@@ -1,6 +1,6 @@
 # E-Commerce Store (Work in Progress) 🛒
 
-![Zrzut ekranu 2024-10-27 o 21 51 20](https://github.com/user-attachments/assets/c2ccdb88-1495-4490-8dac-be4fea9dc112)
+![Zrzut ekranu 2024-10-27 o 21 53 46](https://github.com/user-attachments/assets/999be90c-4d17-4fce-8b6f-dab64b5b17cd)
 
 This project is a simple e-commerce application built using React with state management handled by Zustand and styled with Tailwind CSS. The application is currently under development and allows users to browse products, add them to a shopping cart, and complete purchases.
 
