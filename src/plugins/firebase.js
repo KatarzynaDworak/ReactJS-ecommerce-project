@@ -1,16 +1,23 @@
-import { getAuth } from "firebase/auth";
+// src/plugins/firebase.js
 import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    apiKey: "your-api-key",
+    authDomain: "your-auth-domain",
+    projectId: "your-project-id",
+    storageBucket: "your-storage-bucket",
+    messagingSenderId: "your-messaging-sender-id",
+    appId: "your-app-id"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export { auth };
+const register = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+
+const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
+const resetPassword = (email) => sendPasswordResetEmail(auth, email);
+
+export { auth, register, login, resetPassword };

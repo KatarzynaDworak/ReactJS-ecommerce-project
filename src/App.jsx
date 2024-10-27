@@ -1,25 +1,23 @@
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Cart from "./components/Cart";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProductList from '../src/components/ProductList';
-import Cart from '../src/components/Cart';
-import Checkout from '../src/components/Checkout';
-import Navbar from '../src/components/Navbar';
-
-function App() {
+const App = () => {
   return (
     <Router>
-      <Navbar />
-      <div className="container mx-auto p-4">
-        <Routes>
-          <Route path="/" element={<ProductList />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;
+
 
