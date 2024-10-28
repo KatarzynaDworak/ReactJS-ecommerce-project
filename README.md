@@ -1,6 +1,6 @@
 # E-Commerce Store (Work in Progress) 🛒
 
-![Zrzut ekranu 2024-10-25 o 20 43 47](https://github.com/user-attachments/assets/3dc65b64-a53d-4120-86b2-26fb6234a576)
+![Zrzut ekranu 2024-10-27 o 21 53 46](https://github.com/user-attachments/assets/999be90c-4d17-4fce-8b6f-dab64b5b17cd)
 
 This project is a simple e-commerce application built using React with state management handled by Zustand and styled with Tailwind CSS. The application is currently under development and allows users to browse products, add them to a shopping cart, and complete purchases.
 
@@ -8,6 +8,8 @@ This project is a simple e-commerce application built using React with state man
 
 ## 📋 Overview of the Application Structure
 * **Product Listing**: Users can view a list of products available in the store.
+* **User Authentication and Account Management**:
+  * **Login and Registration**: Users can register, log in, and reset their passwords via Firebase authentication. *(Completed)*
 * **Shopping Cart and Order Management**:
   * **Cart Handling**: Users can add, remove, and edit the quantity of items in the cart. *(Completed)*
   * **Order Summary**: Displays a summary of the total cost of items in the cart, including taxes and shipping fees. *(Completed)*
@@ -20,6 +22,7 @@ This project is a simple e-commerce application built using React with state man
 * Persistent cart state across sessions.
 * Detailed product information and responsive design.
 * Order summary with calculated taxes and shipping fees.
+* User registration, login, and password reset functionality using Firebase.
 * Zustand for lightweight and efficient state management.
 * Tailwind CSS for fast and consistent styling.
 
@@ -34,6 +37,7 @@ The project follows a component-based structure, making it easy to extend and ma
 ## 🛠️ Languages and Tools Used
 * **React (JavaScript)**
 * **Zustand** for state management
+* **Firebase** for authentication
 * **Tailwind CSS** for styling
 * **Vite** for fast development build tool
 * **Git** for version control
@@ -67,3 +71,4 @@ Start the development server:
 **Author: Katarzyna Dworak**
 
 Feel free to contact me for any questions or collaboration opportunities!
+
