@@ -1,6 +1,6 @@
-// src/plugins/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import { getFirestore, collection, addDoc, getDocs, query, where } from "firebase/firestore"; // Import Firestore
 
 const firebaseConfig = {
     apiKey: "your-api-key",
@@ -12,12 +12,34 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
-
 const register = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-
 const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
-
 const resetPassword = (email) => sendPasswordResetEmail(auth, email);
 
-export { auth, register, login, resetPassword };
+const db = getFirestore(app);
+
+const addOrder = async (orderData) => {
+  try {
+    const docRef = await addDoc(collection(db, "orders"), orderData);
+    console.log("Order added with ID: ", docRef.id);
+    return docRef.id;
+  } catch (e) {
+    console.error("Error adding order: ", e);
+    throw e;
+  }
+};
+
+const getUserOrders = async (userId) => {
+  try {
+    const q = query(collection(db, "orders"), where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (e) {
+    console.error("Error fetching orders: ", e);
+    throw e;
+  }
+};
+
+export { auth, register, login, resetPassword, db, addOrder, getUserOrders };

@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import UserDashboard from "./components/UserDashboard";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/user" element={<UserDashboard />} />
       </Routes>
     </Router>
   );

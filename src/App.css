@@ -1,0 +1,9 @@
+.user-dashboard nav {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-content {
+    margin-left: 200px; 
+  }
+  
