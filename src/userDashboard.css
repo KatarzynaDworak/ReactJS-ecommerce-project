@@ -1,0 +1,33 @@
+.user-dashboard {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: #f8f3f7;
+  }
+  
+  .user-dashboard nav {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 20px;
+    background-color: #f06292;
+    color: white;
+  }
+  
+  .user-dashboard nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 0;
+    transition: color 0.2s;
+  }
+  
+  .user-dashboard nav a:hover {
+    color: #ffccde;
+  }
+  
+  .dashboard-content {
+    flex: 1;
+    padding: 20px;
+  }
+  

@@ -1,47 +1,47 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { updateUserData } from '../plugins/firebase';
 
-const PersonalData = () => {
-  const [ personalData, setPersonalData ] = useState({
-    name: '',
-    email: '',
-  });
+const PersonalData = ({ userId }) => {
+  const [personalData, setPersonalData] = useState({ name: '', email: '' });
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
-    setPersonalData({
-      ...personalData, 
-      [e.target.name]: e.target.value,
-    });
-  }
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    setPersonalData({ ...personalData, [e.target.name]: e.target.value });
+  };
 
-    // Wysyłamy dane do serwera
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await updateUserData(userId, personalData);
+      setMessage("Personal data updated successfully!");
+    } catch (error) {
+      setMessage("Failed to update personal data.");
+    }
+  };
 
   return (
     <div>
-      <h2>Personal data</h2>
+      <h2>Personal Data</h2>
       <form onSubmit={handleSubmit}>
-        <input 
-        type='text'
-        name='name'
-        value={personalData.name}
-        onChange={handleChange}
-        placeholder='Name'
+        <input
+          type="text"
+          name="name"
+          value={personalData.name}
+          onChange={handleChange}
+          placeholder="Name"
         />
-        <input 
-        type='text'
-        name='email'
-        value={personalData.email}
-        onChange={handleChange}
-        placeholder='Email'
+        <input
+          type="email"
+          name="email"
+          value={personalData.email}
+          onChange={handleChange}
+          placeholder="Email"
         />
-        <button>Change</button>
+        <button type="submit">Save Changes</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
-  )
-}
+  );
+};
 
 export default PersonalData;
