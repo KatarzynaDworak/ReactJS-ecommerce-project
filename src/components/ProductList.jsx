@@ -27,7 +27,7 @@ const ProductList = () => {
         <div key={product.id} className="border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
           <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
           <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
-          <p className="text-gray-600">${product.price}</p>
+          <p className="text-gray-600">{product.price} PLN</p>
           <button
             className="mt-4 w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition-colors"
             onClick={() => addToCart(product)}
