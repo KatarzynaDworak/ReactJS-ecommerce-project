@@ -66,7 +66,7 @@ const addShippingAddress = async (userId, address) => {
     }
   };
   
-  const getShippingAddresses = async (userId) => {
+const getShippingAddresses = async (userId) => {
     try {
       const userDoc = doc(db, "users", userId);
       const addressesCol = collection(userDoc, "addresses");
