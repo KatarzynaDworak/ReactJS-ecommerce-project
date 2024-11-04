@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getUserOrders } from '../plugins/firebase';
 
-function OrderHistory({ userId }) { // `userId` powinno być przekazywane jako props
+function OrderHistory({ userId }) {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
 
