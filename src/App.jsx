@@ -19,7 +19,12 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true, // Włącza startTransition dla zarządzania stanem
+        v7_relativeSplatPath: true, // Nowy sposób rozwiązywania ścieżek dla tras typu "splat"
+      }}
+    >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
@@ -35,6 +40,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
